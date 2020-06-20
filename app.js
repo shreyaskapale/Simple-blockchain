@@ -1,8 +1,20 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
 var app = express();
 var hash = require('sha256');
 app.use(bodyParser.urlencoded({ extended: true })); 
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res) {
+    res.render('index');
+});
+
+
+
+
+
+
 app.post('/send', function(req, res) {
  certificate = req.body.name;
  addblock(certificate);
@@ -10,8 +22,8 @@ app.post('/send', function(req, res) {
  res.send("certificate uploaded");
 });
 
-app.listen(1234, function() {
-  console.log('xchain : server : 1234');
+app.listen(1111, function() {
+  console.log('xchain : ip - self : port - 1111');
 });
 
 class blockchain {
